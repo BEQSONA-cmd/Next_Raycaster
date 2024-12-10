@@ -27,7 +27,13 @@ class Game
         std::string Name;
     public:
         Game(std::string name) { this->Name = name; }
-        ~Game() { std::cout << YELLOW << "Game Closed." << RESET << std::endl; }
+        ~Game() 
+        { 
+            std::cout << YELLOW << "Game Closed." << RESET << std::endl; 
+            if(this->window)
+                glfwDestroyWindow(this->window);
+            glfwTerminate();
+        }
 
         void init_opengl();
 

@@ -6,7 +6,7 @@ bool Keys::isKeyPressed(GLFWwindow *window, int key)
 {
     if(glfwGetKey(window, key) == GLFW_PRESS)
     {
-        print_key(key);
+        // print_key(key);
         return true;
     }
     return false;

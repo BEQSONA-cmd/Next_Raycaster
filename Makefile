@@ -3,7 +3,7 @@ CXX = c++
 CPPFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -lGL -lglfw -ldl 
 
-SRC = $(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp)
+SRC = $(wildcard *.cpp) $(wildcard */**.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

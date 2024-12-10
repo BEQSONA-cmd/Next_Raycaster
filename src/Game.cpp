@@ -23,16 +23,17 @@ void Game::init_opengl()
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
-
-void draw_triangle(Point triangle[3], float color[3])
+void draw_square(Point coordinates, Point size, float color[3])
 {
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);
     glColor3f(color[0], color[1], color[2]);
-    glVertex2f(triangle[0].x, triangle[0].y);
-    glVertex2f(triangle[1].x, triangle[1].y);
-    glVertex2f(triangle[2].x, triangle[2].y);
+    glVertex2f(coordinates.x - size.x, coordinates.y - size.y);
+    glVertex2f(coordinates.x + size.x, coordinates.y - size.y);
+    glVertex2f(coordinates.x + size.x, coordinates.y + size.y);
+    glVertex2f(coordinates.x - size.x, coordinates.y + size.y);
     glEnd();
 }
+
 
 void Game::run()
 {
@@ -40,27 +41,36 @@ void Game::run()
 
     float color[3] = {1.0f, 1.0f, 0.0f}; 
 
-    Point triangle[3] = {
-        {0.0, 0.5},
-        {0.5, -0.5},
-        {-0.5, -0.5}
-    };
+    Point coordinates;
+    coordinates.x = 0.0f;
+    coordinates.y = 0.0f;
+
+    Point size;
+    size.x = 0.01f;
+    size.y = 0.01f;
 
     int key = 0;
 
     while (!Keys::Close(this->window))
     {
         if((key = Keys::key_pressed(this->window)))
-            Keys::print_key(key);
+        {
+            if(key == W)
+                coordinates.y += 0.01f;
+            else if(key == S)
+                coordinates.y -= 0.01f;
+            else if(key == A)
+                coordinates.x -= 0.01f;
+            else if(key == D)
+                coordinates.x += 0.01f;
+        }
+
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        draw_triangle(triangle, color);
+        draw_square(coordinates, size, color);
 
         glfwSwapBuffers(this->window);
         glfwPollEvents();
     }
-
-    glfwDestroyWindow(this->window);
-    glfwTerminate();
 }

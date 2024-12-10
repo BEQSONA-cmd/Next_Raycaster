@@ -1,7 +1,7 @@
 NAME = game
 CXX = c++
 CPPFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -lGL -lglfw -ldl 
+LDFLAGS = -lGL -lglfw -ldl -lglut
 
 SRC = $(wildcard *.cpp) $(wildcard */**.cpp)
 OBJ = $(SRC:.cpp=.o)

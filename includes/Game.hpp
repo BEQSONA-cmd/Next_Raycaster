@@ -9,6 +9,9 @@
 
 #include <iostream>
 #include <GLFW/glfw3.h>
+#include <GL/glut.h>
+#include <sstream>
+#include <iomanip>
 #include "Keys.hpp"
 
 #define WINDOW_WIDTH 1080

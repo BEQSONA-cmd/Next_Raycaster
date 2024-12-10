@@ -1,5 +1,7 @@
 #include "../includes/Keys.hpp"
 
+std::vector<int> Keys::keys = {ESC, SPACE, ENTER, W, A, S, D};
+
 bool Keys::isKeyPressed(GLFWwindow *window, int key)
 {
     if(glfwGetKey(window, key) == GLFW_PRESS)

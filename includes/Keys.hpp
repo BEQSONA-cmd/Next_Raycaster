@@ -23,6 +23,4 @@ class Keys
         static int key_pressed(GLFWwindow *window);
 };
 
-std::vector<int> Keys::keys = {ESC, SPACE, ENTER, W, A, S, D};
-
 #endif

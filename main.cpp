@@ -1,8 +1,8 @@
-#include "Game.hpp"
+#include "includes/Game.hpp"
 
 int main()
 {
-    Game game;
+    Game game("OpenGL Game");
     game.run();
     return 0;
 }

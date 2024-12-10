@@ -1,15 +1,18 @@
-NAME = Game
-CXX = c++  # Use at least C++11 for modern OpenGL support
-CPPFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -lGL -lglfw -ldl  # Link OpenGL and GLFW libraries
+NAME = game
+CXX = c++
+CPPFLAGS = -Wall -Werror -Wextra -g
+LDFLAGS = -lGL -lglfw -ldl 
 
-SRC = $(wildcard *.cpp)
+SRC = $(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS)
+
+run: all
+	./$(NAME)
 
 clean:
 	rm -rf $(OBJ)
